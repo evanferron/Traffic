@@ -6,10 +6,12 @@ namespace traffic
     public abstract class Way
     {
         public bool canVehiculePass;
-        // create a var that contains all vehicules which are in the way
-        // create a var that contains all pedestrials which are in the way
+        public List<Vehicle> vehicles;
+        public List<Pedestrian> pedestrian;
 
         public Way();
 
+
+        public abstract bool canVehiculeDrive(Way leftWay, Way rightWay);
     }
 }

@@ -1,7 +1,7 @@
 using System;
 
 namespace traffic{
-    class Vehicle
+    public class Vehicle
     {
         private Way Departure {get;set;}
         private Way Arrive{get;set;}
