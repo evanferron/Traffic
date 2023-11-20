@@ -3,7 +3,7 @@ using System;
 namespace traffic
 {
 
-    public class Way
+    public abstract class Way
     {
         public bool canVehiculePass;
         // create a var that contains all vehicules which are in the way
