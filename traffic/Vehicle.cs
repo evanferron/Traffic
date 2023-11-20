@@ -3,11 +3,11 @@ using System;
 namespace traffic{
     public class Vehicle
     {
-        private Way Departure {get;set;}
-        private Way Arrive{get;set;}
-        private string Name {get;set;}
+        public string Departure {get;set;}
+        public string Arrive{get;set;}
+        public string Name {get;set;}
 
-        public Vehicle(Way Arrive, Way Departure, string Name){
+        public Vehicle(string Arrive, string Departure, string Name){
             this.Arrive = Arrive;
             this.Departure = Departure;
             this.Name = Name;

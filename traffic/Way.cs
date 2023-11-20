@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace traffic
 {
@@ -8,10 +9,6 @@ namespace traffic
         public bool canVehiculePass;
         public List<Vehicle> vehicles;
         public List<Pedestrian> pedestrian;
-
-        public Way();
-
-
         public abstract bool canVehiculeDrive(Way leftWay, Way rightWay);
     }
 }

@@ -1,11 +1,13 @@
-using Programme;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace traffic
 {
     public class Intersection
     {
         readonly string name;
-        public Way[] ways { get; set; };
+        public Way[] ways { get; set; }
 
         public Intersection(string name)
         {

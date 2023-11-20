@@ -1,7 +1,7 @@
 using System;
 namespace traffic
 {
-    class Pedestrian
+    public class Pedestrian
     {
         public string Position = "null";
         public bool Walk = false;
