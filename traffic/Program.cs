@@ -6,6 +6,8 @@ namespace traffic
     {
         static void Main(string[] args)
         {
+            Intersection inter = new Intersection("test");
+            inter.AddWay();
             Console.WriteLine("Veuillez choisir un type d'intersection :\n 1- cédez le passage \n 2- feux rouge\n Entrez votre réponse : ");
             string input = Console.ReadLine();
             while (input != "q")

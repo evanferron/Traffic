@@ -15,19 +15,18 @@ namespace traffic
                 Random randomPosition = new Random();
                 int intPosition = randomPosition.Next(0,4);
                 if (intPosition == 0){
-                    this.Position = "nord";
+                    this.Position = "up";
                 }
                 if (intPosition == 1){
-                    this.Position = "est";
+                    this.Position = "right";
                 }
                 if (intPosition == 2){
-                    this.Position = "sud";
+                    this.Position = "bottom";
                 }
                 if (intPosition == 3){
-                    this.Position = "ouest";
+                    this.Position = "left";
                 }
-            }
-            
+            } 
         }
 
         public void Stop(){

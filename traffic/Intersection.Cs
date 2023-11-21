@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,18 +8,25 @@ namespace traffic
     public class Intersection
     {
         readonly string name;
-        public Way[] ways { get; set; }
+        public List<Way> Ways  = new List<Way>();
 
         public Intersection(string name)
         {
             this.name = name;
         }
 
-        public void AddWay(Way way)
-        {
-            List<Way> LWays = ways.ToList();
-            LWays.Add(way);
-            ways = LWays.ToArray();
+        public void AddWay()
+        {   
+            Way wayT = new TrafficLight("top",0);
+            Way wayR = new TrafficLight("right",1);
+            Way wayB = new TrafficLight("bottom",0);
+            Way wayL = new TrafficLight("left",1);
+
+            this.Ways.Add(wayT);
+            this.Ways.Add(wayR);
+            this.Ways.Add(wayB);
+            this.Ways.Add(wayL);
+  
         }
     }
 }

@@ -10,9 +10,6 @@ namespace traffic{
         public Vehicle(string Arrive, string Name){
             this.Arrive = Arrive;
             this.Name = Name;
-
         }
-
-
     }
 }

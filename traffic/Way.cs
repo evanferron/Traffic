@@ -5,34 +5,59 @@ using System.Runtime.InteropServices;
 namespace traffic
 {
 
-    public abstract  class Way
+    public abstract class Way
     {
+        public string name;
         public bool CanVehiculePass;
         public List<Vehicle> Vehicles  = new List<Vehicle>();
+
+        public TrafficLight trafficLight;
         //public List<Pedestrian> Pedestrian; 
 
         public Way(){
+
+        }
+
+        public Way(string _name){
+            this.name = _name;
+
             Random aleatoire = new();
             int nbVehicle = aleatoire.Next(6);
             for(int i=0 ; i<=nbVehicle; i++){
                 CreateVehicle();
             }
         }
-        enum direction
-        {
-        right = 2,
-        center = 1,
-        left= 0,
-}
 
         public void CreateVehicle(){
-            Random aleatoire = new();
-            int entierUnChiffre = aleatoire.Next(3);
-            string Arrive  = ((direction)entierUnChiffre).ToString();
-            Vehicle vehicle =new(Arrive,"name");
+            Random aleatory = new();
+            int intNumber = aleatory.Next(4);
+            string arrive ="";
+            if (intNumber == 0 ){
+                 arrive = "top";
+            }
+            if (intNumber == 1 ){
+                 arrive = "right";
+            }
+            if (intNumber == 2 ){
+                 arrive = "bottom";
+            }
+            if (intNumber == 3 ){
+                 arrive = "left";
+            }
+            // if car go where it come
+            if (arrive == this.name){
+                arrive = "bottom";
+                if (arrive == this.name){
+                    arrive = "left";
+                }
+            }
+
+            Vehicle vehicle = new(arrive,"name");
+
             if (vehicle!= null){
                 this.Vehicles.Add(vehicle);
             }
+        
         }
 
         public abstract bool canVehiculeDrive(Way leftWay, Way rightWay);
