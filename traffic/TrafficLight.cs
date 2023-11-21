@@ -4,15 +4,20 @@ namespace traffic
 {
     public class TrafficLight : Way
     {
-        private TrafficLightEnum light;
-        private Timer timerLight
-        {
-            get; set;
-        }
+        public TrafficLightEnum light;
+        
+        // private Timer timerLight
+        // {
+        //     get; set;
+        // }
 
-        public TrafficLight(TrafficLightEnum light)
+        public TrafficLight(string _name, int color) : base(_name)
         {
-            this.light = light;
+            if (color == 0){
+                this.light = TrafficLightEnum.Green;
+            } else {
+                this.light = TrafficLightEnum.Red;
+            }
 
         }
 
@@ -23,7 +28,7 @@ namespace traffic
                 return false;
             }
             return true;
-        };
+        }
 
         public void changeLight()
         {
@@ -41,6 +46,13 @@ namespace traffic
 
             }
         }
+
+        public enum TrafficLightEnum
+    {
+        Red,
+        Orange,
+        Green
+    }
 
         // public async void changeLight()
         // {
@@ -63,10 +75,5 @@ namespace traffic
         // }
     }
 
-    enum TrafficLightEnum
-    {
-        Red,
-        Orange,
-        Green
-    }
+    
 }
