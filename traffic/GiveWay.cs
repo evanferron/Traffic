@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace traffic
 {
 
-    public class GiveWay
+    public class GiveWay : Way
     {
-        public bool GoThrought(Vehicle vehicle, Way leftWay, Way rightWay){
+        public override bool GoThrought(Vehicle vehicle, Way leftWay, Way rightWay, Way infrontWay){
             if (vehicle.Departure == "left" && leftWay.Vehicles.Count == 0 && rightWay.Vehicles.Count == 0){
                 return true;
             }

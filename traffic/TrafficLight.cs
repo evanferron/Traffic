@@ -5,32 +5,44 @@ namespace traffic
     public class TrafficLight : Way
     {
         public TrafficLightEnum light;
-        
-        // private Timer timerLight
-        // {
-        //     get; set;
-        // }
 
         public TrafficLight(string _name, int color) : base(_name)
         {
-            if (color == 0){
+            if (color == 0)
+            {
                 this.light = TrafficLightEnum.Green;
-            } else {
+            }
+            else
+            {
                 this.light = TrafficLightEnum.Red;
             }
 
         }
 
-        public override bool canVehiculeDrive(Way leftWay, Way rightWay)
+        public override bool GoThrought(Vehicle vehicle, Way leftWay, Way rightWay, Way infrontWay)
         {
             if (light == TrafficLightEnum.Red)
             {
                 return false;
             }
+            if (vehicle.Departure == "left")
+            {
+                if (infrontWay.Vehicles.Count != 0)
+                {
+                    foreach (Vehicle veh in infrontWay.Vehicles)
+                    {
+                        if (veh.Arrive == vehicle.Departure)
+                        {
+                            WaitingsVehicles.Add(vehicle);
+                            return false;
+                        }
+                    }
+                }
+            }
             return true;
         }
 
-        public void changeLight()
+        public void ChangeLight()
         {
             switch (light)
             {
@@ -48,11 +60,11 @@ namespace traffic
         }
 
         public enum TrafficLightEnum
-    {
-        Red,
-        Orange,
-        Green
-    }
+        {
+            Red,
+            Orange,
+            Green
+        }
 
         // public async void changeLight()
         // {
@@ -75,5 +87,5 @@ namespace traffic
         // }
     }
 
-    
+
 }

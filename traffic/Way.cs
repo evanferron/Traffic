@@ -9,57 +9,73 @@ namespace traffic
     {
         public string name;
         public bool CanVehiculePass;
-        public List<Vehicle> Vehicles  = new List<Vehicle>();
+        public List<Vehicle> Vehicles = new List<Vehicle>();
+        public List<Vehicle> WaitingsVehicles = new List<Vehicle>();
+
+
 
         public TrafficLight trafficLight;
+
+
         //public List<Pedestrian> Pedestrian; 
 
-        public Way(){
+        public Way()
+        {
 
         }
 
-        public Way(string _name){
+        public Way(string _name)
+        {
             this.name = _name;
 
             Random aleatoire = new();
             int nbVehicle = aleatoire.Next(6);
-            for(int i=0 ; i<=nbVehicle; i++){
+            for (int i = 0; i <= nbVehicle; i++)
+            {
                 CreateVehicle();
             }
         }
 
-        public void CreateVehicle(){
+        public void CreateVehicle()
+        {
             Random aleatory = new();
             int intNumber = aleatory.Next(4);
-            string arrive ="";
-            if (intNumber == 0 ){
-                 arrive = "top";
+            string arrive = "";
+            if (intNumber == 0)
+            {
+                arrive = "top";
             }
-            if (intNumber == 1 ){
-                 arrive = "right";
+            if (intNumber == 1)
+            {
+                arrive = "right";
             }
-            if (intNumber == 2 ){
-                 arrive = "bottom";
+            if (intNumber == 2)
+            {
+                arrive = "bottom";
             }
-            if (intNumber == 3 ){
-                 arrive = "left";
+            if (intNumber == 3)
+            {
+                arrive = "left";
             }
             // if car go where it come
-            if (arrive == this.name){
+            if (arrive == this.name)
+            {
                 arrive = "bottom";
-                if (arrive == this.name){
+                if (arrive == this.name)
+                {
                     arrive = "left";
                 }
             }
 
-            Vehicle vehicle = new(arrive,"name");
+            Vehicle vehicle = new(arrive, "name");
 
-            if (vehicle!= null){
+            if (vehicle != null)
+            {
                 this.Vehicles.Add(vehicle);
             }
-        
+
         }
 
-        public abstract bool canVehiculeDrive(Way leftWay, Way rightWay);
+        public abstract bool GoThrought(Vehicle vehicle, Way leftWay, Way rightWay, Way infrontWay);
     }
 }
