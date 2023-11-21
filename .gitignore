@@ -1,2 +1,4 @@
 /traffic/bin
 /traffic/obj
+*.sln
+*.csproj
