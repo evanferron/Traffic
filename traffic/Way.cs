@@ -13,12 +13,12 @@ namespace traffic
 
         public Way(){
             Random aleatoire = new();
-            int entierUnChiffre = aleatoire.Next(5);
-            for(int i=0 ; i<=entierUnChiffre; i++){
+            int nbVehicle = aleatoire.Next(6);
+            for(int i=0 ; i<=nbVehicle; i++){
                 CreateVehicle();
             }
         }
-        enum Season
+        enum direction
         {
         right = 2,
         center = 1,
@@ -27,8 +27,8 @@ namespace traffic
 
         public void CreateVehicle(){
             Random aleatoire = new();
-            int entierUnChiffre = aleatoire.Next(1);
-            string Arrive  = ((Season)entierUnChiffre).ToString();
+            int entierUnChiffre = aleatoire.Next(3);
+            string Arrive  = ((direction)entierUnChiffre).ToString();
             Vehicle vehicle =new(Arrive,"name");
             if (vehicle!= null){
                 this.Vehicles.Add(vehicle);
