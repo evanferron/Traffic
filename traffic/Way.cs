@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace traffic
 {
-
     public abstract class Way
     {
         public bool canVehiculePass;
