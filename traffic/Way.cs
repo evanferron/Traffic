@@ -67,7 +67,7 @@ namespace traffic
                 }
             }
 
-            Vehicle vehicle = new(arrive, "name");
+            Vehicle vehicle = new(arrive,this.name , "name");
 
             if (vehicle != null)
             {
@@ -77,5 +77,7 @@ namespace traffic
         }
 
         public abstract bool GoThrought(Vehicle vehicle, Way leftWay, Way rightWay, Way infrontWay);
+
+        
     }
 }

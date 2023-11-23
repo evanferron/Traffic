@@ -9,9 +9,10 @@ namespace traffic
             Intersection inter = new Intersection("test");
             inter.AddWay();
             Console.WriteLine("Veuillez choisir un type d'intersection :\n 1- cédez le passage \n 2- feux rouge\n Entrez votre réponse : ");
-            string input = Console.ReadLine();
+            string input= "";
             while (input != "q")
             {
+                input = Console.ReadLine();
                 switch (input)
                 {
                     case "1":
@@ -27,7 +28,7 @@ namespace traffic
                         Console.WriteLine("Veuillez choisir un type d'intersection :\n 1- cédez le passage \n 2- feux rouge\n Entrez votre réponse valid : ");
                         break;
                 }
-
+                
             }
 
         }

@@ -10,6 +10,11 @@ namespace traffic
         readonly string name;
         public List<Way> Ways = new List<Way>();
 
+        public Way wayT;
+        public Way wayR;
+        public Way wayB;
+        public Way wayL;
+
         public Intersection(string name)
         {
             this.name = name;
@@ -36,5 +41,6 @@ namespace traffic
             }
 
         }
+
     }
 }

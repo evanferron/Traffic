@@ -7,9 +7,14 @@ namespace traffic{
         public string Arrive{get;set;}
         public string Name {get;set;}
 
-        public Vehicle(string Arrive, string Name){
+        public Vehicle(string Arrive,string Departure, string Name){
             this.Arrive = Arrive;
+            this.Departure=Departure;
             this.Name = Name;
+        } 
+
+        public void advance(){
+            Console.WriteLine("le véicule avance et va sur la vois" + this.Arrive);
         }
     }
 }
