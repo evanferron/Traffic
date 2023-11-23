@@ -4,24 +4,25 @@ namespace traffic
 {
     public class TrafficLight : Way
     {
-        public TrafficLightEnum light;
+        public TrafficLightEnum Light;
 
         public TrafficLight(string _name, int color) : base(_name)
-        {
+        {   
             if (color == 0)
             {
-                this.light = TrafficLightEnum.Green;
+                this.Light = TrafficLightEnum.Green;
+                
             }
             else
             {
-                this.light = TrafficLightEnum.Red;
+                this.Light = TrafficLightEnum.Red;
             }
 
         }
 
         public override bool GoThrought(Vehicle vehicle, Way leftWay, Way rightWay, Way infrontWay)
         {
-            if (light == TrafficLightEnum.Red)
+            if (this.Light == TrafficLightEnum.Red || this.Light == TrafficLightEnum.Red2)
             {
                 return false;
             }
@@ -44,16 +45,19 @@ namespace traffic
 
         public void ChangeLight()
         {
-            switch (light)
+            switch (this.Light)
             {
                 case TrafficLightEnum.Orange:
-                    light = TrafficLightEnum.Red;
+                    this.Light = TrafficLightEnum.Red;
                     break;
                 case TrafficLightEnum.Red:
-                    light = TrafficLightEnum.Green;
+                    this.Light = TrafficLightEnum.Red2;
+                    break;
+                case TrafficLightEnum.Red2:
+                    this.Light = TrafficLightEnum.Green;
                     break;
                 default:
-                    light = TrafficLightEnum.Orange;
+                    this.Light = TrafficLightEnum.Orange;
                     break;
 
             }
@@ -62,30 +66,10 @@ namespace traffic
         public enum TrafficLightEnum
         {
             Red,
+
+            Red2,
             Orange,
             Green
         }
-
-        // public async void changeLight()
-        // {
-        //     await while (true)
-        //     {
-        //         switch (light)
-        //         {
-        //             case TrafficLightEnum.Orange:
-        //                 light = new Timer(async _ => await light = TrafficLightEnum.Red, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
-        //                 break;
-        //             case TrafficLightEnum.Red:
-        //                 light = new Timer(async _ => await light = TrafficLightEnum.Green, null, TimeSpan.Zero, TimeSpan.FromSeconds(4));
-        //                 break;
-        //             default:
-        //                 light = new Timer(async _ => await light = TrafficLightEnum.Orange, null, TimeSpan.Zero, TimeSpan.FromSeconds(3));
-        //                 break;
-
-        //         }
-        //     }
-        // }
     }
-
-
 }

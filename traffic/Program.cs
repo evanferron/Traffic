@@ -13,7 +13,7 @@ namespace traffic
             string input= "";
             while (input != "q")
             {
-                traffic.RoundManagement(inter);
+                traffic.RoundManagementTrafficLight(inter);
                 input = Console.ReadLine();
                 // switch (input)
                 // {

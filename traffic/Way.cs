@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 
 namespace traffic
 {
-
     public abstract class Way
     {
         public string name;
@@ -12,17 +11,9 @@ namespace traffic
         public List<Vehicle> Vehicles = new List<Vehicle>();
         public List<Vehicle> WaitingsVehicles = new List<Vehicle>();
 
-
-
-        public TrafficLight trafficLight;
-
-
         //public List<Pedestrian> Pedestrian; 
 
-        public Way()
-        {
-
-        }
+        public Way(){}
 
         public Way(string _name)
         {
@@ -80,7 +71,7 @@ namespace traffic
             int isWalk = randomWalk.Next(0,5);
             if (isWalk == 0){
                 this.CreateVehicle();
-                Console.WriteLine("un véicule ariver sur la vois " + this.name);
+                Console.WriteLine("un véhicule arrive sur la file d'attente de la voie " + this.name);
             }
         }
 
