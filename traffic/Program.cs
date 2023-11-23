@@ -6,28 +6,30 @@ namespace traffic
     {
         static void Main(string[] args)
         {
-            Intersection inter = new Intersection("test");
+            Intersection inter = new Intersection("traffic light");
+            Traffic traffic = new();
             inter.AddWay();
             Console.WriteLine("Veuillez choisir un type d'intersection :\n 1- cédez le passage \n 2- feux rouge\n Entrez votre réponse : ");
             string input= "";
             while (input != "q")
             {
+                traffic.RoundManagement(inter);
                 input = Console.ReadLine();
-                switch (input)
-                {
-                    case "1":
-                        //execute giveway
-                        break;
-                    case "2":
-                        // execute red light
-                        break;
-                    case "q":
-                        continue;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Veuillez choisir un type d'intersection :\n 1- cédez le passage \n 2- feux rouge\n Entrez votre réponse valid : ");
-                        break;
-                }
+                // switch (input)
+                // {
+                //     case "1":
+                //         //execute giveway
+                //         break;
+                //     case "2":
+                //         traffic.RoundManagement(inter);
+                //         break;
+                //     case "q":
+                //         continue;
+                //     default:
+                //         Console.Clear();
+                //         Console.WriteLine("Veuillez choisir un type d'intersection :\n 1- cédez le passage \n 2- feux rouge\n Entrez votre réponse valid : ");
+                //         break;
+                // }
                 
             }
 

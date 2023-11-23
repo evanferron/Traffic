@@ -14,15 +14,17 @@ namespace traffic
                 Way leftWay  = result.Item1;
                 Way rightWay = result.Item2;
                 Way infrontWay = result.Item3;
-                if(element.GoThrought(element.Vehicles[0], leftWay,rightWay,infrontWay)){
-                    element.Vehicles[0].advance();
-                    if (element.Vehicles.Count > 0)
+                
+                if (element.Vehicles.Count > 0)
+                {
+                    if(element.GoThrought(element.Vehicles[0], leftWay,rightWay,infrontWay))
                     {
+                        element.Vehicles[0].advance();
+                        
                         element.Vehicles.RemoveAt(0);
-                        Console.WriteLine("Le premier élément a été retiré.");
-                    }
+                     }
                 }
-
+                element.AddVehicle();
             }
         }
 

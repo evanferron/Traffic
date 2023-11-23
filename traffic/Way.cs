@@ -75,6 +75,14 @@ namespace traffic
             }
 
         }
+        public void AddVehicle(){
+            Random randomWalk = new Random();
+            int isWalk = randomWalk.Next(0,5);
+            if (isWalk == 0){
+                this.CreateVehicle();
+                Console.WriteLine("un véicule ariver sur la vois " + this.name);
+            }
+        }
 
         public abstract bool GoThrought(Vehicle vehicle, Way leftWay, Way rightWay, Way infrontWay);
 

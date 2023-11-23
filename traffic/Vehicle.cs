@@ -14,7 +14,8 @@ namespace traffic{
         } 
 
         public void advance(){
-            Console.WriteLine("le véicule avance et va sur la vois" + this.Arrive);
+            Console.WriteLine("le premier véicule de la vois de "+  this.Departure + " avance et va sur la vois " + this.Arrive);
         }
+
     }
 }
