@@ -14,7 +14,7 @@ namespace traffic{
         } 
 
         public void advance(){
-            Console.WriteLine("le premier véhicule de la vois de "+  this.Departure + " avance et va sur la voie de " + this.Arrive);
+            Console.WriteLine("   -le premier véhicule de la vois de "+  this.Departure + " avance et va sur la voie de " + this.Arrive);
         }
 
     }

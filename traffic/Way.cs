@@ -11,7 +11,7 @@ namespace traffic
         public List<Vehicle> Vehicles = new List<Vehicle>();
         public List<Vehicle> WaitingsVehicles = new List<Vehicle>();
 
-        //public List<Pedestrian> Pedestrian; 
+        public bool thereIsPedestrian; 
 
         public Way(){}
 
@@ -71,12 +71,23 @@ namespace traffic
             int isWalk = randomWalk.Next(0,5);
             if (isWalk == 0){
                 this.CreateVehicle();
-                Console.WriteLine("un véhicule arrive sur la file d'attente de la voie " + this.name);
+                Console.WriteLine("   -un véhicule arrive sur la file d'attente de la voie " + this.name);
             }
         }
 
         public abstract bool GoThrought(Vehicle vehicle, Way leftWay, Way rightWay, Way infrontWay);
 
-        
+        public bool PedestrianWhereVehiculeGo(Way way1, Way way2, Way way3, Vehicle car){
+            if (way1.name == car.Arrive && way1.thereIsPedestrian == true){
+                return true;
+            }
+            if (way2.name == car.Arrive && way2.thereIsPedestrian == true){
+                return true;
+            }
+            if (way3.name == car.Arrive && way3.thereIsPedestrian == true){
+                return true;
+            }
+            return false;
+        } 
     }
 }

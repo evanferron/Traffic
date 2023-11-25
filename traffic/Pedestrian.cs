@@ -1,39 +1,18 @@
 using System;
+using System.Collections.Generic;
 namespace traffic
 {
-    public class Pedestrian
+    public static class Pedestrian
     {
-        public string Position = "null";
-        public bool Walk = false;
-
-        public void Move(){
+        public static void PedestrianMove(List<Way> listWay){
             Random randomWalk = new Random();
-            int isWalk = randomWalk.Next(0,9);
+            int isWalk = randomWalk.Next(0,5);
             if (isWalk == 0){
-                this.Walk = true;
                 
                 Random randomPosition = new Random();
                 int intPosition = randomPosition.Next(0,4);
-                if (intPosition == 0){
-                    this.Position = "up";
-                }
-                if (intPosition == 1){
-                    this.Position = "right";
-                }
-                if (intPosition == 2){
-                    this.Position = "bottom";
-                }
-                if (intPosition == 3){
-                    this.Position = "left";
-                }
+                listWay[intPosition].thereIsPedestrian = true;
             } 
-        }
-
-        public void Stop(){
-            if (this.Walk == true){
-                this.Walk = false;
-                this.Position = "null";
-            }
         }
     }
 }

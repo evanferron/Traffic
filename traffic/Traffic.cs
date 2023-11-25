@@ -8,7 +8,9 @@ namespace traffic
 
         public int Round = 0; 
         public  void RoundManagementTrafficLight(Intersection intersection){
-            this.Round ++ ;
+            
+            Pedestrian.PedestrianMove(intersection.Ways);
+            int numOfCycle = 1;
             if (this.Round%2 == 0){
                 intersection.wayT.ChangeLight();
                 intersection.wayB.ChangeLight();
@@ -16,19 +18,20 @@ namespace traffic
                 intersection.wayR.ChangeLight();
             } 
             foreach (TrafficLight element in intersection.Ways)
-            {
+            {   
+                
                 Console.WriteLine();
                 if (element.Light == TrafficLight.TrafficLightEnum.Red){
-                     Console.WriteLine("le feux de la voie " + element.name + " est de couleur rouge" );
+                     Console.WriteLine(numOfCycle.ToString() +" -le feux de la voie " + element.name + " est de couleur rouge, il y a " + element.Vehicles.Count.ToString()+" véhicules qui attendent leur tour");
                 }
                 if (element.Light == TrafficLight.TrafficLightEnum.Red2){
-                     Console.WriteLine("le feux de la voie " + element.name + " est de couleur rouge" );
+                     Console.WriteLine(numOfCycle.ToString() +" -le feux de la voie " + element.name + " est de couleur rouge, il y a " + element.Vehicles.Count.ToString()+" véhicules qui attendent leur tour" );
                 }
                 if (element.Light == TrafficLight.TrafficLightEnum.Orange){
-                     Console.WriteLine("le feux de la voie " + element.name + " est de couleur orange" );
+                     Console.WriteLine(numOfCycle.ToString() +" -le feux de la voie " + element.name + " est de couleur orange, il y a " + element.Vehicles.Count.ToString()+" véhicules qui attendent leur tour" );
                 }
                 if (element.Light == TrafficLight.TrafficLightEnum.Green){
-                     Console.WriteLine("le feux de la voie " + element.name + " est de couleur verte" );
+                     Console.WriteLine(numOfCycle.ToString() +" -le feux de la voie " + element.name + " est de couleur verte, il y a " + element.Vehicles.Count.ToString()+" véhicules qui attendent leur tour" );
                 }
                
 
@@ -48,8 +51,49 @@ namespace traffic
                         element.Vehicles.RemoveAt(0);
                      }
                 }
-                element.AddVehicle();
+                element.thereIsPedestrian = false;
+                numOfCycle++;
+                element.AddVehicle();     
             }
+            this.Round ++ ;
+            Console.WriteLine("___________________");
+        }
+
+        public  void RoundManagementGiveWay(Intersection intersection){
+            int numOfCycle = 1;
+            string type = "";
+            Pedestrian.PedestrianMove(intersection.Ways);
+            foreach (Way element in intersection.Ways)
+            {   
+                
+                if (element.GetType().ToString() == "traffic.DefaultWay"){
+                     type = "voie normal";
+                } else {
+                     type = "céder le passage";
+                }
+                Console.WriteLine();
+                Console.WriteLine(numOfCycle.ToString() + " -Sur la voie " + element.name + " ( " + type + " )  il y a " + element.Vehicles.Count.ToString()+" véhicules qui attendent leur tour");
+                var result  = Direction(element.name, intersection);
+                Way leftWay  = result.Item1;
+                Way rightWay = result.Item2;
+                Way infrontWay = result.Item3;
+                
+                if (element.Vehicles.Count > 0)
+                {
+
+                    if(element.GoThrought(element.Vehicles[0], leftWay,rightWay,infrontWay))
+                    {
+                        element.Vehicles[0].advance();
+                        
+                        element.Vehicles.RemoveAt(0);
+                     }
+                }
+                element.thereIsPedestrian = false;
+                numOfCycle++; 
+                element.AddVehicle();  
+            }
+            this.Round ++ ;
+            Console.WriteLine("___________________"); 
         }
 
         public static (Way,Way,Way) Direction(string name, Intersection intersection ){

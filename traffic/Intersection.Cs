@@ -17,9 +17,9 @@ namespace traffic
         public TrafficLight wayL;
 
 // pour l'intersection céder le passage
-        public GiveWay wayTGiveWay;
+        public DefaultWay wayTDefaultWay;
         public GiveWay wayRGiveWay;
-        public GiveWay wayBGiveWay;
+        public DefaultWay wayBDefaultWay;
         public GiveWay wayLGiveWay;
 
         public Intersection(string name)
@@ -29,7 +29,7 @@ namespace traffic
 
         public void AddWay()
         {
-            if (name == "traffic light")
+            if (this.name == "2")
             {
 
                 this.wayT = new TrafficLight("top", 0);
@@ -43,16 +43,16 @@ namespace traffic
                 this.Ways.Add(wayL);
             }
             else
-            {
-                this.wayTGiveWay = new GiveWay("top");
+            {      
                 this.wayRGiveWay = new GiveWay("right");
-                this.wayBGiveWay = new GiveWay("bottom");
                 this.wayLGiveWay = new GiveWay("left");
-
-                this.Ways.Add(wayTGiveWay);
+                this.wayTDefaultWay = new DefaultWay("top");
+                this.wayBDefaultWay = new DefaultWay("bottom");
+                
                 this.Ways.Add(wayRGiveWay);
-                this.Ways.Add(wayBGiveWay);
                 this.Ways.Add(wayLGiveWay);  
+                this.Ways.Add(wayTDefaultWay);
+                this.Ways.Add(wayBDefaultWay); 
             }
         }
     }
